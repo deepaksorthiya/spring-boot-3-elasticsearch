@@ -1,17 +1,17 @@
 # Getting Started
 ## Requirements:
 ```
-Spring Boot : 3.2.3
+Spring Boot : 3.3.5
 Java : 21
 Maven : 3.9 +
-ElasticSearch : 8.11.4
+ElasticSearch : 8.15.3
 Docker Engine: 25.0.2
 Compose: v2.24.3-desktop.1
 ```
 ### Clone Github Repository
 ```bash
-git clone https://github.com/deepaksorthiya/spring-boot-3-elasticsearch-realworld
-cd spring-boot-3-elasticsearch-realworld
+git clone https://github.com/deepaksorthiya/spring-boot-3-elasticsearch
+cd spring-boot-3-elasticsearch
 ```
 
 ### Start Docker:
