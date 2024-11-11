@@ -29,7 +29,7 @@ public class ElasticClientTest {
     @Bean
     public ElasticsearchClient elasticRestClient() throws IOException {
         // Creating the testcontainer
-        String image = "docker.elastic.co/elasticsearch/elasticsearch:8.11.4";
+        String image = "docker.elastic.co/elasticsearch/elasticsearch:8.15.3";
         ElasticsearchContainer container = new ElasticsearchContainer(image)
                 .withEnv("ES_JAVA_OPTS", "-Xms256m -Xmx256m")
                 .withEnv("path.repo", "/tmp") // for snapshots

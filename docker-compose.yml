@@ -1,0 +1,39 @@
+services:
+  ################## ELASTICSEARCH ######################
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    container_name: elasticsearch-${ELASTIC_VERSION}
+    environment:
+      "discovery.type": "single-node"
+      "xpack.security.enabled": "false"
+      "xpack.security.http.ssl.enabled": "false"
+    ports:
+      - "9200:9200"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1" ]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    networks:
+      - elastic
+  ################## KIBANA ############################
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
+    container_name: kibana-${ELASTIC_VERSION}
+    environment:
+      XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: d1a66dfd-c4d3-4a0a-8290-2abcb83ab3aa
+    ports:
+      - 5601:5601
+    networks:
+      - elastic
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+        reservations:
+          cpus: '1.0'
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+networks:
+  elastic:
