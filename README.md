@@ -1,10 +1,12 @@
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-elasticsearch/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-elasticsearch/actions/workflows/maven.yml)
+
 # Getting Started
 
 ## Requirements:
 
 ```
 Git: 2.47.1
-Spring Boot : 3.4.0
+Spring Boot : 3.4.1
 Java : 21
 Maven : 3.9 +
 ElasticSearch : 8.16.0
