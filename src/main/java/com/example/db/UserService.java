@@ -31,12 +31,13 @@ import com.example.document.exception.UnauthorizedException;
 import com.example.document.user.*;
 import com.example.utils.UserIdPair;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.TextCodec;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.io.IOException;
@@ -112,16 +113,16 @@ public class UserService {
                 });
 
         // Building user's JWT, with no expiration since it's not requested
+        byte[] keyBytes = Decoders.BASE64.decode(jwtSigningKey);
+        SecretKey secretKey = Keys.hmacShaKeyFor(keyBytes);
         String jws = Jwts.builder()
-                .setIssuer("rw-backend")
-                .setSubject(user.email())
+                .issuer("rw-backend")
+                .subject(user.email())
                 .claim("name", user.username())
                 .claim("scope", "user")
-                .setIssuedAt(Date.from(Instant.now()))
-                .signWith(
-                        SignatureAlgorithm.HS256,
-                        TextCodec.BASE64.decode(jwtSigningKey)
-                )
+                .issuedAt(Date.from(Instant.now()))
+                .expiration(new Date((new Date()).getTime() + 1000 * 60 * 60))
+                .signWith(secretKey)
                 .compact();
 
         // Hashing the password, storing the salt with the user
@@ -188,8 +189,11 @@ public class UserService {
         String token;
         try {
             token = auth.split(" ")[1];
+            byte[] keyBytes = Decoders.BASE64.decode(jwtSigningKey);
+            SecretKey secretKey = Keys.hmacShaKeyFor(keyBytes);
             Jwts.parser()
-                    .setSigningKey(TextCodec.BASE64.decode(jwtSigningKey))
+                    .verifyWith(secretKey)
+                    .build()
                     .parse(token);
         } catch (Exception e) {
             throw new UnauthorizedException("Token missing or not recognised");

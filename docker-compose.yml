@@ -1,8 +1,8 @@
 services:
   ################## ELASTICSEARCH ######################
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
-    container_name: elasticsearch-${ELASTIC_VERSION}
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.0
+    container_name: elasticsearch-8.17.0
     environment:
       "discovery.type": "single-node"
       "xpack.security.enabled": "false"
@@ -18,8 +18,8 @@ services:
       - elastic
   ################## KIBANA ############################
   kibana:
-    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
-    container_name: kibana-${ELASTIC_VERSION}
+    image: docker.elastic.co/kibana/kibana:8.17.0
+    container_name: kibana-8.17.0
     environment:
       XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: d1a66dfd-c4d3-4a0a-8290-2abcb83ab3aa
     ports:
