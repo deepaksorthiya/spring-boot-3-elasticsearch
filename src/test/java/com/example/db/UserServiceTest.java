@@ -27,16 +27,18 @@ import com.example.document.user.UserDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.boot.testcontainers.context.ImportTestcontainers;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.io.IOException;
 import java.util.Objects;
 
 // This test uses test container, therefore the Docker engine needs to be installed to run it
 // The testcontainer will take ~30 seconds to start
-@TestPropertySource(locations = "classpath:test.properties")
-@SpringBootTest(classes = {UserService.class, UserServiceTest.class, ElasticClientTest.class})
-public class UserServiceTest {
+@SpringBootTest
+@ImportTestcontainers(TestConfiguration.class)
+@Testcontainers
+class UserServiceTest {
 
     @Autowired
     private UserService service;
