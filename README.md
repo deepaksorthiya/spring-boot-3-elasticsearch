@@ -1,4 +1,4 @@
-[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-elasticsearch/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-elasticsearch/actions/workflows/maven.yml)
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-elasticsearch/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-elasticsearch/actions/workflows/maven.yml)
 
 # Getting Started
 
@@ -16,8 +16,8 @@ Docker Desktop: Tested on 4.43.0
 ### Clone Github Repository
 
 ```bash
-git clone https://github.com/deepaksorthiya/spring-boot-3-elasticsearch
-cd spring-boot-3-elasticsearch
+git clone https://github.com/deepaksorthiya/spring-boot-elasticsearch
+cd spring-boot-elasticsearch
 ```
 
 ### Start Docker:
