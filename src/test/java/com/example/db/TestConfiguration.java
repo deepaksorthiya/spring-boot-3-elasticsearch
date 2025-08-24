@@ -10,7 +10,7 @@ import java.time.Duration;
 
 class TestConfiguration {
 
-    private static final String ELASTICSEARCH_IMAGE = "docker.elastic.co/elasticsearch/elasticsearch:8.18.3";
+    private static final String ELASTICSEARCH_IMAGE = "docker.elastic.co/elasticsearch/elasticsearch:8.18.5";
 
     @Container
     @ServiceConnection

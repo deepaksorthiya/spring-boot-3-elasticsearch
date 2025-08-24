@@ -6,10 +6,10 @@
 
 ```
 Git: 2.51.0
-Spring Boot : 3.5.0
-Java : 21
+Spring Boot : 3.5.5
+Java : 24
 Maven : 3.9 +
-ElasticSearch : 8.18.3
+ElasticSearch : 8.18.5
 Docker Desktop: Tested on 4.43.0
 ```
 
