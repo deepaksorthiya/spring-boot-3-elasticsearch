@@ -5,7 +5,7 @@
 ## Requirements:
 
 ```
-Git: 2.50.1
+Git: 2.51.0
 Spring Boot : 3.5.0
 Java : 21
 Maven : 3.9 +
@@ -32,7 +32,13 @@ docker compose up
 ./mvnw spring-boot:run
 ```
 
-### URLs
+### Testing
+
+Postman APIs collection
+
+[Postman Collection](https://www.postman.com/deepaksorthiya/workspace/public-ws/collection/12463530-60865d80-e4fd-46fc-88bc-d73528446e3c?action=share&creator=12463530&active-environment=12463530-55c10ebe-548f-4c1b-a5ec-4d4ed996c033)
+
+### Important URLs
 
 * [KIBANA HOME](http://localhost:5601)
 * [ES HOME](http://localhost:9200)

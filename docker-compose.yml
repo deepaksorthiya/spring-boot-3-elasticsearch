@@ -7,6 +7,13 @@ services:
       "discovery.type": "single-node"
       "xpack.security.enabled": "false"
       "xpack.security.http.ssl.enabled": "false"
+      "logger.org.elasticsearch.plugins": "WARN"
+      "logger.org.elasticsearch.cluster.metadata": "WARN"
+      "logger.org.elasticsearch.xpack": "WARN"
+      "logger.org.elasticsearch.telemetry": "WARN"
+      "logger.org.elasticsearch.threadpool": "WARN"
+      "logger.org.elasticsearch.cluster.routing.allocation": "WARN"
+      "logger.org.elasticsearch.http": "WARN"
     ports:
       - "9200:9200"
     healthcheck:
